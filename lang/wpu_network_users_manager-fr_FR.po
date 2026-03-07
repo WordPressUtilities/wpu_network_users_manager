@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPU Network Users Manager\n"
+"POT-Creation-Date: 2026-03-07 22:48+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_x;_e\n"
+"X-Generator: Poedit 3.8\n"
+"X-Poedit-SearchPath-0: ../.\n"
+"X-Poedit-SearchPathExcluded-0: inc/WPUBaseAdminDatas\n"
+"X-Poedit-SearchPathExcluded-1: inc/WPUBaseSettings\n"
+
+#: .././wpu_network_users_manager.php:42
+msgid "Add new user management features to the WP network admin"
+msgstr ""
+"Ajoute de nouvelles fonctionnalités de gestion utilisateur à "
+"l’administrateur réseau WP"
+
+#: .././wpu_network_users_manager.php:62
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
+
+#: .././wpu_network_users_manager.php:81 .././wpu_network_users_manager.php:168
+msgid "User not found."
+msgstr "Utilisateur Introuvable."
+
+#: .././wpu_network_users_manager.php:84
+#, php-format
+msgid "Edit user #%d : %s"
+msgstr "Modifier l’utilisateur #%d : %s"
+
+#: .././wpu_network_users_manager.php:87
+msgid "User updated successfully."
+msgstr "Utilisateur mis à jour avec succès."
+
+#: .././wpu_network_users_manager.php:90
+msgid "Back to users list"
+msgstr "Retour à la liste des utilisateurs"
+
+#: .././wpu_network_users_manager.php:97
+msgid "No blogs found."
+msgstr "Aucun blog trouvé."
+
+#: .././wpu_network_users_manager.php:107
+msgid "Blog Name"
+msgstr "Nom du blog"
+
+#: .././wpu_network_users_manager.php:108
+msgid "Blog URL"
+msgstr "URL du blog"
+
+#: .././wpu_network_users_manager.php:109
+msgid "Role"
+msgstr "Rôle"
+
+#: .././wpu_network_users_manager.php:146
+msgid "Save Changes"
+msgstr "Sauvegarder"
+
+#: .././wpu_network_users_manager.php:158
+msgid "You do not have sufficient permissions to perform this action."
+msgstr ""
+"Vous n'avez pas les autorisations suffisantes pour effectuer cette opération."
+
+#: .././wpu_network_users_manager.php:162
+msgid "Invalid nonce. Please try again."
+msgstr "Nonce invalide. Veuillez réessayer."
+
+#: .././wpu_network_users_manager.php:195
+msgid "Users list"
+msgstr "Liste des Utilisateurs"
+
+#: .././wpu_network_users_manager.php:199
+msgid "ID"
+msgstr "ID"
+
+#: .././wpu_network_users_manager.php:200
+msgid "Login"
+msgstr "Connexion"
+
+#: .././wpu_network_users_manager.php:201
+msgid "Email"
+msgstr "E-Mail"
+
+#: .././wpu_network_users_manager.php:202
+msgid "Actions"
+msgstr "Actions"
