@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPU Network Users Manager\n"
-"POT-Creation-Date: 2026-03-08 18:58+0100\n"
+"POT-Creation-Date: 2026-03-09 22:03+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -160,6 +160,14 @@ msgstr "Actions"
 msgid "Edit"
 msgstr "Modifier"
 
+#: .././inc/tpl/set-all-roles.php:8
+msgid "Set all roles"
+msgstr "Définissez tous les rôles"
+
+#: .././inc/tpl/set-all-roles.php:15
+msgid "Set all"
+msgstr "Tout définir"
+
 #: .././wpu_network_users_manager.php:46
 msgid "Add new user management features to the WP network admin"
 msgstr ""
@@ -182,7 +190,7 @@ msgstr "Nonce invalide. Veuillez réessayer."
 
 #: .././wpu_network_users_manager.php:169
 msgid "Users list"
-msgstr "Liste des Utilisateurs"
+msgstr "Liste des utilisateurs"
 
 #: .././wpu_network_users_manager.php:171
 #: .././wpu_network_users_manager.php:177

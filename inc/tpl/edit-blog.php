@@ -88,3 +88,5 @@ echo $this->basetoolbox->array_to_html_table($users_rows, array(
 wp_nonce_field('wpu_network_users_manager_save_blog', 'wpu_network_users_manager_nonce');
 submit_button(__('Save Changes', 'wpu_network_users_manager'));
 echo '</form>';
+
+include __DIR__ . '/set-all-roles.php';
