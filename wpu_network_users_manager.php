@@ -4,11 +4,11 @@ Plugin Name: WPU Network Users Manager
 Plugin URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Update URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Description: Add new user management features to the WP network admin
-Version: 0.3.0
+Version: 0.4.0
 Author: Darklg
 Author URI: https://darklg.me/
 Text Domain: wpu_network_users_manager
-Requires at least: 6.7
+Requires at least: 6.2
 Requires PHP: 8.0
 Domain Path: /lang
 License: MIT License
@@ -49,7 +49,8 @@ class wpu_network_users_manager {
     public function load_dependencies() {
         require_once __DIR__ . '/inc/WPUBaseToolbox/WPUBaseToolbox.php';
         $this->basetoolbox = new \wpu_network_users_manager\WPUBaseToolbox(array(
-            'need_form_js' => false
+            'need_form_js' => false,
+            'need_table_js' => true
         ));
     }
 

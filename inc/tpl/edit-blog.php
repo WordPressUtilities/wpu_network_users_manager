@@ -54,7 +54,7 @@ foreach ($users as $user) {
     $html_select .= '</select>';
     $users_rows[] = array(
         'id' => $user->ID,
-        'login' => $user->user_login,
+        'login' => '<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&user_id=' . $user->ID)) . '">' . esc_html($user->user_login) . '</a>',
         'email' => $user->user_email,
         'role_select' => $html_select
     );
@@ -69,7 +69,7 @@ echo '<input type="hidden" name="action" value="wpu_network_users_manager_save_b
 echo '<input type="hidden" name="blog_id" value="' . esc_attr($blog_id) . '">';
 
 echo $this->basetoolbox->array_to_html_table($users_rows, array(
-    'table_classname' => 'wp-list-table widefat fixed striped users',
+    'table_classname' => 'wp-list-table wpubasetoolbox-table-sort widefat fixed striped users',
     'htmlspecialchars_td' => false,
     'htmlspecialchars_th' => false,
     'colnames' => array(

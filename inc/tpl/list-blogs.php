@@ -20,7 +20,7 @@ foreach ($blogs as $blog) {
 ---------------------------------------------------------- */
 
 echo $this->basetoolbox->array_to_html_table($blogs_rows, array(
-    'table_classname' => 'wp-list-table widefat fixed striped users',
+    'table_classname' => 'wp-list-table wpubasetoolbox-table-sort widefat fixed striped users',
     'htmlspecialchars_td' => false,
     'htmlspecialchars_th' => false,
     'colnames' => array(

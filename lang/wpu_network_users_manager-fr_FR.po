@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPU Network Users Manager\n"
-"POT-Creation-Date: 2026-03-09 22:03+0100\n"
+"POT-Creation-Date: 2026-03-18 15:23+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,42 +12,42 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_x;_e\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-SearchPath-0: ../.\n"
 "X-Poedit-SearchPathExcluded-0: inc/WPUBaseAdminDatas\n"
 "X-Poedit-SearchPathExcluded-1: inc/WPUBaseSettings\n"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:169
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:178
 msgid "Submit"
 msgstr "Envoyer"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:195
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:204
 msgid "Previous"
 msgstr "Précédent"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:196
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:205
 msgid "Next"
 msgstr "Suivant"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:244
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:253
 msgid "No"
 msgstr "Non"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:245
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:254
 msgid "Yes"
 msgstr "Oui"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:388
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:397
 #, php-format
 msgid "The field “%s” is required"
 msgstr "Le champ « %s » est obligatoire"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:393
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:402
 #, php-format
 msgid "The field “%s” should be an email"
 msgstr "Le champ « %s » devrait être un e-mail"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:706
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:715
 #, php-format
 msgid ""
 "The plugin <b>%s</b> depends on the following plugins. Please install and "
@@ -56,7 +56,7 @@ msgstr ""
 "Le plugin <b>%s</b> dépend des plugins suivants. Veuillez les installer et "
 "les activer :"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:712
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:721
 #, php-format
 msgid ""
 "The plugin <b>%s</b> depends on the <b>%s</b> plugin. Please install and "
@@ -65,11 +65,11 @@ msgstr ""
 "Le plugin <b>%s</b> dépend du plugin <b>%s</b>. Merci de l’installer et de "
 "l’activer."
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:758
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:767
 msgid "No data available."
 msgstr "Pas de données disponibles."
 
-#: .././inc/tpl/edit-blog.php:11 .././wpu_network_users_manager.php:106
+#: .././inc/tpl/edit-blog.php:11 .././wpu_network_users_manager.php:107
 msgid "Blog not found."
 msgstr "Blog non trouvé."
 
@@ -111,7 +111,7 @@ msgstr "Rôle"
 msgid "Save Changes"
 msgstr "Sauvegarder"
 
-#: .././inc/tpl/edit-user.php:10 .././wpu_network_users_manager.php:145
+#: .././inc/tpl/edit-user.php:10 .././wpu_network_users_manager.php:146
 msgid "User not found."
 msgstr "Utilisateur Introuvable."
 
@@ -160,11 +160,11 @@ msgstr "Actions"
 msgid "Edit"
 msgstr "Modifier"
 
-#: .././inc/tpl/set-all-roles.php:8
+#: .././inc/tpl/set-all-roles.php:9
 msgid "Set all roles"
 msgstr "Définissez tous les rôles"
 
-#: .././inc/tpl/set-all-roles.php:15
+#: .././inc/tpl/set-all-roles.php:16
 msgid "Set all"
 msgstr "Tout définir"
 
@@ -174,29 +174,29 @@ msgstr ""
 "Ajoute de nouvelles fonctionnalités de gestion utilisateur à "
 "l’administration réseau WP"
 
-#: .././wpu_network_users_manager.php:73
+#: .././wpu_network_users_manager.php:74
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
 
-#: .././wpu_network_users_manager.php:96 .././wpu_network_users_manager.php:135
+#: .././wpu_network_users_manager.php:97 .././wpu_network_users_manager.php:136
 msgid "You do not have sufficient permissions to perform this action."
 msgstr ""
 "Vous n'avez pas les autorisations suffisantes pour effectuer cette opération."
 
-#: .././wpu_network_users_manager.php:100
-#: .././wpu_network_users_manager.php:139
+#: .././wpu_network_users_manager.php:101
+#: .././wpu_network_users_manager.php:140
 msgid "Invalid nonce. Please try again."
 msgstr "Nonce invalide. Veuillez réessayer."
 
-#: .././wpu_network_users_manager.php:169
+#: .././wpu_network_users_manager.php:170
 msgid "Users list"
 msgstr "Liste des utilisateurs"
 
-#: .././wpu_network_users_manager.php:171
-#: .././wpu_network_users_manager.php:177
+#: .././wpu_network_users_manager.php:172
+#: .././wpu_network_users_manager.php:178
 msgid "View list"
 msgstr "Voir la liste"
 
-#: .././wpu_network_users_manager.php:175
+#: .././wpu_network_users_manager.php:176
 msgid "Sites list"
 msgstr "Liste des sites"
