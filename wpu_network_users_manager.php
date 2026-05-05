@@ -4,7 +4,7 @@ Plugin Name: WPU Network Users Manager
 Plugin URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Update URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Description: Add new user management features to the WP network admin
-Version: 0.4.0
+Version: 0.5.0
 Author: Darklg
 Author URI: https://darklg.me/
 Text Domain: wpu_network_users_manager
@@ -78,6 +78,8 @@ class wpu_network_users_manager {
             require_once __DIR__ . '/inc/tpl/edit-user.php';
         } else if (isset($_GET['blog_id'])) {
             require_once __DIR__ . '/inc/tpl/edit-blog.php';
+        } else if (isset($_GET['show_list'])){
+            require_once __DIR__ . '/inc/tpl/show-list.php';
         } else {
             $this->admin_page_list();
         }
@@ -172,12 +174,17 @@ class wpu_network_users_manager {
         echo '<summary>' . __('View list', 'wpu_network_users_manager') . '</summary>';
         require_once __DIR__ . '/inc/tpl/list-users.php';
         echo '</details>';
+
         echo '<hr />';
         echo '<h2>' . __('Sites list', 'wpu_network_users_manager') . '</h2>';
         echo '<details>';
         echo '<summary>' . __('View list', 'wpu_network_users_manager') . '</summary>';
         require_once __DIR__ . '/inc/tpl/list-blogs.php';
         echo '</details>';
+
+        echo '<hr />';
+        echo '<h2>' . __('Sites and their users', 'wpu_network_users_manager') . '</h2>';
+        echo wpautop('<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&show_list=1')) . '" class="button">' . __('View list', 'wpu_network_users_manager') . '</a>');
     }
 
     /* ----------------------------------------------------------

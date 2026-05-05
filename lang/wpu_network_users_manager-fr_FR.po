@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPU Network Users Manager\n"
-"POT-Creation-Date: 2026-03-18 15:23+0100\n"
+"POT-Creation-Date: 2026-05-05 18:36+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,43 +11,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-KeywordsList: __;_x;_e\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_n:1,2;esc_attr__;esc_html__;esc_attr_e;esc_html_e\n"
 "X-Generator: Poedit 3.9\n"
 "X-Poedit-SearchPath-0: ../.\n"
 "X-Poedit-SearchPathExcluded-0: inc/WPUBaseAdminDatas\n"
 "X-Poedit-SearchPathExcluded-1: inc/WPUBaseSettings\n"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:178
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:179
 msgid "Submit"
 msgstr "Envoyer"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:204
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:205
 msgid "Previous"
 msgstr "Précédent"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:205
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:206
 msgid "Next"
 msgstr "Suivant"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:253
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:254
 msgid "No"
 msgstr "Non"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:254
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:255
 msgid "Yes"
 msgstr "Oui"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:397
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:398
 #, php-format
 msgid "The field “%s” is required"
 msgstr "Le champ « %s » est obligatoire"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:402
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:403
 #, php-format
 msgid "The field “%s” should be an email"
 msgstr "Le champ « %s » devrait être un e-mail"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:715
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:739
 #, php-format
 msgid ""
 "The plugin <b>%s</b> depends on the following plugins. Please install and "
@@ -56,7 +56,7 @@ msgstr ""
 "Le plugin <b>%s</b> dépend des plugins suivants. Veuillez les installer et "
 "les activer :"
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:721
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:745
 #, php-format
 msgid ""
 "The plugin <b>%s</b> depends on the <b>%s</b> plugin. Please install and "
@@ -65,11 +65,29 @@ msgstr ""
 "Le plugin <b>%s</b> dépend du plugin <b>%s</b>. Merci de l’installer et de "
 "l’activer."
 
-#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:767
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:758
+#, php-format
+msgid ""
+"The plugin <b>%s</b> needs specific plugins versions. Please update them:"
+msgstr ""
+"Le plugin <b>%s</b> nécessite des versions spécifiques de certains plugins. "
+"Veuillez les mettre à jour :"
+
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:765
+#, php-format
+msgid ""
+"The plugin <b>%s</b> needs a specific <b>%s</b> plugin version. Please "
+"update it to at least version %s (current version: %s)."
+msgstr ""
+"Le plugin <b>%s</b> nécessite une version spécifique <b>%s</b> du plugin. "
+"Veuillez le mettre à jour au moins jusqu'à la version %s (version actuelle : "
+"%s)."
+
+#: .././inc/WPUBaseToolbox/WPUBaseToolbox.php:811
 msgid "No data available."
 msgstr "Pas de données disponibles."
 
-#: .././inc/tpl/edit-blog.php:11 .././wpu_network_users_manager.php:107
+#: .././inc/tpl/edit-blog.php:11 .././wpu_network_users_manager.php:109
 msgid "Blog not found."
 msgstr "Blog non trouvé."
 
@@ -78,7 +96,7 @@ msgstr "Blog non trouvé."
 msgid "Users of blog #%d : %s"
 msgstr "Utilisateurs du blog #%d : %s"
 
-#: .././inc/tpl/edit-blog.php:20
+#: .././inc/tpl/edit-blog.php:20 .././inc/tpl/show-list.php:9
 msgid "Back to sites list"
 msgstr "Retour à la liste des sites"
 
@@ -100,6 +118,7 @@ msgid "Login"
 msgstr "Connexion"
 
 #: .././inc/tpl/edit-blog.php:83 .././inc/tpl/list-users.php:35
+#: .././inc/tpl/show-list.php:52
 msgid "Email"
 msgstr "E-Mail"
 
@@ -111,7 +130,7 @@ msgstr "Rôle"
 msgid "Save Changes"
 msgstr "Sauvegarder"
 
-#: .././inc/tpl/edit-user.php:10 .././wpu_network_users_manager.php:146
+#: .././inc/tpl/edit-user.php:10 .././wpu_network_users_manager.php:148
 msgid "User not found."
 msgstr "Utilisateur Introuvable."
 
@@ -144,7 +163,7 @@ msgstr "URL du blog"
 msgid "View users"
 msgstr "Voir les utilisateurs"
 
-#: .././inc/tpl/list-blogs.php:33
+#: .././inc/tpl/list-blogs.php:33 .././inc/tpl/show-list.php:51
 msgid "Name"
 msgstr "Nom"
 
@@ -168,6 +187,18 @@ msgstr "Définissez tous les rôles"
 msgid "Set all"
 msgstr "Tout définir"
 
+#: .././inc/tpl/show-list.php:8 .././wpu_network_users_manager.php:186
+msgid "Sites and their users"
+msgstr "Sites et utilisateurs"
+
+#: .././inc/tpl/show-list.php:32
+msgid "No users."
+msgstr "Aucun utilisateur."
+
+#: .././inc/tpl/show-list.php:53
+msgid "Role(s)"
+msgstr "Rôle(s)"
+
 #: .././wpu_network_users_manager.php:46
 msgid "Add new user management features to the WP network admin"
 msgstr ""
@@ -178,25 +209,26 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
 
-#: .././wpu_network_users_manager.php:97 .././wpu_network_users_manager.php:136
+#: .././wpu_network_users_manager.php:99 .././wpu_network_users_manager.php:138
 msgid "You do not have sufficient permissions to perform this action."
 msgstr ""
 "Vous n'avez pas les autorisations suffisantes pour effectuer cette opération."
 
-#: .././wpu_network_users_manager.php:101
-#: .././wpu_network_users_manager.php:140
+#: .././wpu_network_users_manager.php:103
+#: .././wpu_network_users_manager.php:142
 msgid "Invalid nonce. Please try again."
 msgstr "Nonce invalide. Veuillez réessayer."
 
-#: .././wpu_network_users_manager.php:170
+#: .././wpu_network_users_manager.php:172
 msgid "Users list"
 msgstr "Liste des utilisateurs"
 
-#: .././wpu_network_users_manager.php:172
-#: .././wpu_network_users_manager.php:178
+#: .././wpu_network_users_manager.php:174
+#: .././wpu_network_users_manager.php:181
+#: .././wpu_network_users_manager.php:187
 msgid "View list"
 msgstr "Voir la liste"
 
-#: .././wpu_network_users_manager.php:176
+#: .././wpu_network_users_manager.php:179
 msgid "Sites list"
 msgstr "Liste des sites"
