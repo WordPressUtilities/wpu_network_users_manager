@@ -4,7 +4,7 @@ Plugin Name: WPU Network Users Manager
 Plugin URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Update URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Description: Add new user management features to the WP network admin
-Version: 0.5.0
+Version: 0.5.1
 Author: Darklg
 Author URI: https://darklg.me/
 Text Domain: wpu_network_users_manager
@@ -78,8 +78,12 @@ class wpu_network_users_manager {
             require_once __DIR__ . '/inc/tpl/edit-user.php';
         } else if (isset($_GET['blog_id'])) {
             require_once __DIR__ . '/inc/tpl/edit-blog.php';
-        } else if (isset($_GET['show_list'])){
+        } else if (isset($_GET['show_list'])) {
             require_once __DIR__ . '/inc/tpl/show-list.php';
+        } else if (isset($_GET['list_users'])) {
+            require_once __DIR__ . '/inc/tpl/list-users.php';
+        } else if (isset($_GET['list_blogs'])) {
+            require_once __DIR__ . '/inc/tpl/list-blogs.php';
         } else {
             $this->admin_page_list();
         }
@@ -110,10 +114,14 @@ class wpu_network_users_manager {
         }
 
         $users = $this->get_users();
+        $editable_roles = get_editable_roles();
 
         foreach ($users as $user) {
             $role_key = isset($_POST['role_' . $user->ID]) ? sanitize_text_field($_POST['role_' . $user->ID]) : '';
             if ($role_key) {
+                if (!isset($editable_roles[$role_key])) {
+                    wp_die(__('Invalid role selected for user: %s', 'wpu_network_users_manager'), $user->user_login);
+                }
                 add_user_to_blog($blog_id, $user->ID, $role_key);
             } else {
                 remove_user_from_blog($user->ID, $blog_id);
@@ -149,11 +157,15 @@ class wpu_network_users_manager {
         }
 
         $blogs = $this->get_blogs();
+        $editable_roles = get_editable_roles();
 
         foreach ($blogs as $blog) {
             $blog_id = $blog->blog_id;
             $role_key = isset($_POST['role_' . $blog_id]) ? sanitize_text_field($_POST['role_' . $blog_id]) : '';
             if ($role_key) {
+                if (!isset($editable_roles[$role_key])) {
+                    wp_die(__('Invalid role selected for user: %s', 'wpu_network_users_manager'), $user->user_login);
+                }
                 add_user_to_blog($blog_id, $user_id, $role_key);
             } else {
                 remove_user_from_blog($user_id, $blog_id);
@@ -170,17 +182,11 @@ class wpu_network_users_manager {
 
     private function admin_page_list() {
         echo '<h2>' . __('Users list', 'wpu_network_users_manager') . '</h2>';
-        echo '<details>';
-        echo '<summary>' . __('View list', 'wpu_network_users_manager') . '</summary>';
-        require_once __DIR__ . '/inc/tpl/list-users.php';
-        echo '</details>';
+        echo wpautop('<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&list_users')) . '" class="button">' . __('View list', 'wpu_network_users_manager') . '</a>');
 
         echo '<hr />';
         echo '<h2>' . __('Sites list', 'wpu_network_users_manager') . '</h2>';
-        echo '<details>';
-        echo '<summary>' . __('View list', 'wpu_network_users_manager') . '</summary>';
-        require_once __DIR__ . '/inc/tpl/list-blogs.php';
-        echo '</details>';
+        echo wpautop('<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&list_blogs')) . '" class="button">' . __('View list', 'wpu_network_users_manager') . '</a>');
 
         echo '<hr />';
         echo '<h2>' . __('Sites and their users', 'wpu_network_users_manager') . '</h2>';

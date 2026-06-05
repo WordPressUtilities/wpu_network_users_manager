@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPU Network Users Manager\n"
-"POT-Creation-Date: 2026-05-05 18:36+0200\n"
+"POT-Creation-Date: 2026-06-05 22:22+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -11,7 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_n:1,2;esc_attr__;esc_html__;esc_attr_e;esc_html_e\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_n:1,2;esc_attr__;esc_html__;esc_attr_e;esc_html_e\n"
 "X-Generator: Poedit 3.9\n"
 "X-Poedit-SearchPath-0: ../.\n"
 "X-Poedit-SearchPathExcluded-0: inc/WPUBaseAdminDatas\n"
@@ -87,7 +88,7 @@ msgstr ""
 msgid "No data available."
 msgstr "Pas de données disponibles."
 
-#: .././inc/tpl/edit-blog.php:11 .././wpu_network_users_manager.php:109
+#: .././inc/tpl/edit-blog.php:11 .././wpu_network_users_manager.php:113
 msgid "Blog not found."
 msgstr "Blog non trouvé."
 
@@ -96,7 +97,7 @@ msgstr "Blog non trouvé."
 msgid "Users of blog #%d : %s"
 msgstr "Utilisateurs du blog #%d : %s"
 
-#: .././inc/tpl/edit-blog.php:20 .././inc/tpl/show-list.php:9
+#: .././inc/tpl/edit-blog.php:20
 msgid "Back to sites list"
 msgstr "Retour à la liste des sites"
 
@@ -108,29 +109,29 @@ msgstr "Blog mis à jour avec succès."
 msgid "No users found."
 msgstr "Aucun utilisateur trouvé."
 
-#: .././inc/tpl/edit-blog.php:77 .././inc/tpl/edit-user.php:83
-#: .././inc/tpl/list-blogs.php:28 .././inc/tpl/list-users.php:29
+#: .././inc/tpl/edit-blog.php:77 .././inc/tpl/edit-user.php:85
+#: .././inc/tpl/list-blogs.php:33 .././inc/tpl/list-users.php:33
 msgid "ID"
 msgstr "ID"
 
-#: .././inc/tpl/edit-blog.php:82 .././inc/tpl/list-users.php:34
+#: .././inc/tpl/edit-blog.php:82 .././inc/tpl/list-users.php:38
 msgid "Login"
 msgstr "Connexion"
 
-#: .././inc/tpl/edit-blog.php:83 .././inc/tpl/list-users.php:35
+#: .././inc/tpl/edit-blog.php:83 .././inc/tpl/list-users.php:39
 #: .././inc/tpl/show-list.php:52
 msgid "Email"
 msgstr "E-Mail"
 
-#: .././inc/tpl/edit-blog.php:84 .././inc/tpl/edit-user.php:90
+#: .././inc/tpl/edit-blog.php:84 .././inc/tpl/edit-user.php:92
 msgid "Role"
 msgstr "Rôle"
 
-#: .././inc/tpl/edit-blog.php:89 .././inc/tpl/edit-user.php:95
+#: .././inc/tpl/edit-blog.php:89 .././inc/tpl/edit-user.php:97
 msgid "Save Changes"
 msgstr "Sauvegarder"
 
-#: .././inc/tpl/edit-user.php:10 .././wpu_network_users_manager.php:148
+#: .././inc/tpl/edit-user.php:10 .././wpu_network_users_manager.php:156
 msgid "User not found."
 msgstr "Utilisateur Introuvable."
 
@@ -151,31 +152,44 @@ msgstr "Retour à la liste des utilisateurs"
 msgid "No blogs found."
 msgstr "Aucun blog trouvé."
 
-#: .././inc/tpl/edit-user.php:88
+#: .././inc/tpl/edit-user.php:90
 msgid "Blog Name"
 msgstr "Nom du blog"
 
-#: .././inc/tpl/edit-user.php:89
+#: .././inc/tpl/edit-user.php:91
 msgid "Blog URL"
 msgstr "URL du blog"
 
-#: .././inc/tpl/list-blogs.php:14
+#: .././inc/tpl/list-blogs.php:4 .././wpu_network_users_manager.php:188
+msgid "Sites list"
+msgstr "Liste des sites"
+
+#: .././inc/tpl/list-blogs.php:5 .././inc/tpl/list-users.php:5
+#: .././inc/tpl/show-list.php:9
+msgid "Back"
+msgstr "Retour"
+
+#: .././inc/tpl/list-blogs.php:19
 msgid "View users"
 msgstr "Voir les utilisateurs"
 
-#: .././inc/tpl/list-blogs.php:33 .././inc/tpl/show-list.php:51
+#: .././inc/tpl/list-blogs.php:38 .././inc/tpl/show-list.php:51
 msgid "Name"
 msgstr "Nom"
 
-#: .././inc/tpl/list-blogs.php:34
+#: .././inc/tpl/list-blogs.php:39
 msgid "URL"
 msgstr "URL"
 
-#: .././inc/tpl/list-blogs.php:35 .././inc/tpl/list-users.php:36
+#: .././inc/tpl/list-blogs.php:40 .././inc/tpl/list-users.php:40
 msgid "Actions"
 msgstr "Actions"
 
-#: .././inc/tpl/list-users.php:15
+#: .././inc/tpl/list-users.php:4 .././wpu_network_users_manager.php:184
+msgid "Users list"
+msgstr "Liste des utilisateurs"
+
+#: .././inc/tpl/list-users.php:19
 msgid "Edit"
 msgstr "Modifier"
 
@@ -187,7 +201,7 @@ msgstr "Définissez tous les rôles"
 msgid "Set all"
 msgstr "Tout définir"
 
-#: .././inc/tpl/show-list.php:8 .././wpu_network_users_manager.php:186
+#: .././inc/tpl/show-list.php:8 .././wpu_network_users_manager.php:192
 msgid "Sites and their users"
 msgstr "Sites et utilisateurs"
 
@@ -209,26 +223,25 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
 
-#: .././wpu_network_users_manager.php:99 .././wpu_network_users_manager.php:138
+#: .././wpu_network_users_manager.php:103
+#: .././wpu_network_users_manager.php:146
 msgid "You do not have sufficient permissions to perform this action."
 msgstr ""
 "Vous n'avez pas les autorisations suffisantes pour effectuer cette opération."
 
-#: .././wpu_network_users_manager.php:103
-#: .././wpu_network_users_manager.php:142
+#: .././wpu_network_users_manager.php:107
+#: .././wpu_network_users_manager.php:150
 msgid "Invalid nonce. Please try again."
 msgstr "Nonce invalide. Veuillez réessayer."
 
-#: .././wpu_network_users_manager.php:172
-msgid "Users list"
-msgstr "Liste des utilisateurs"
+#: .././wpu_network_users_manager.php:123
+#: .././wpu_network_users_manager.php:167
+#, php-format
+msgid "Invalid role selected for user: %s"
+msgstr "Rôle non valide sélectionné pour l'utilisateur : %s"
 
-#: .././wpu_network_users_manager.php:174
-#: .././wpu_network_users_manager.php:181
-#: .././wpu_network_users_manager.php:187
+#: .././wpu_network_users_manager.php:185
+#: .././wpu_network_users_manager.php:189
+#: .././wpu_network_users_manager.php:193
 msgid "View list"
 msgstr "Voir la liste"
-
-#: .././wpu_network_users_manager.php:179
-msgid "Sites list"
-msgstr "Liste des sites"

@@ -35,6 +35,8 @@ if (!$blogs) {
     return;
 }
 
+$default_editable_roles = get_editable_roles();
+
 $blogs_rows = array();
 foreach ($blogs as $blog) {
     /* Blog details */
@@ -49,7 +51,7 @@ foreach ($blogs as $blog) {
     $roles = [];
     $blog_details = get_blog_details($blog_id);
     if ($blog_details) {
-        $roles = get_editable_roles();
+        $roles = $default_editable_roles;
     }
 
     $html_select = '<select name="role_' . esc_attr($blog_id) . '">';

@@ -6,7 +6,7 @@ defined('ABSPATH') || die;
 ---------------------------------------------------------- */
 
 echo '<h2>' . __('Sites and their users', 'wpu_network_users_manager') . '</h2>';
-echo '<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager')) . '" class="button">' . __('Back to sites list', 'wpu_network_users_manager') . '</a>';
+echo '<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager')) . '" class="button">' . __('Back', 'wpu_network_users_manager') . '</a>';
 echo '<hr />';
 
 $blogs = $this->get_blogs();

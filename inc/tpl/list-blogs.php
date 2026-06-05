@@ -1,5 +1,10 @@
 <?php
 defined('ABSPATH') || die;
+
+echo '<h2>' . __('Sites list', 'wpu_network_users_manager') . '</h2>';
+echo '<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager')) . '" class="button">' . __('Back', 'wpu_network_users_manager') . '</a>';
+echo '<hr />';
+
 /* ----------------------------------------------------------
   Retrieve blogs
 ---------------------------------------------------------- */
