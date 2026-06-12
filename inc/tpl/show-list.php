@@ -17,7 +17,7 @@ foreach ($blogs as $blog) {
     $blog_url = get_site_url($blog_id);
 
     echo '<h3>';
-    echo '#' . esc_html($blog_id) . ' &mdash; ' . esc_html($blog_name);
+    echo '#' . esc_html($blog_id) . ' &mdash; ' . '<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&blog_id=' . $blog_id)) . '">' . esc_html($blog_name) . '</a>';
     echo ' <small>(<a href="' . esc_url($blog_url) . '" target="_blank" rel="noopener">' . esc_html($blog_url) . '</a>)</small>';
     echo '</h3>';
 
@@ -37,7 +37,7 @@ foreach ($blogs as $blog) {
     foreach ($users as $user) {
         $roles = !empty($user->roles) ? implode(', ', $user->roles) : '&mdash;';
         $users_rows[] = array(
-            'name' => esc_html($user->display_name),
+            'name' => '<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&user_id=' . $user->ID)) . '">' . esc_html($user->display_name) . '</a>',
             'email' => '<a href="mailto:' . esc_attr($user->user_email) . '">' . esc_html($user->user_email) . '</a>',
             'roles' => esc_html($roles)
         );

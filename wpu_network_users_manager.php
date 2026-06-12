@@ -4,7 +4,7 @@ Plugin Name: WPU Network Users Manager
 Plugin URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Update URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Description: Add new user management features to the WP network admin
-Version: 0.5.1
+Version: 0.5.2
 Author: Darklg
 Author URI: https://darklg.me/
 Text Domain: wpu_network_users_manager
