@@ -24,6 +24,10 @@ if (isset($_GET['updated']) && $_GET['updated'] == '1') {
     echo '<div class="notice notice-success is-dismissible"><p>' . __('Blog updated successfully.', 'wpu_network_users_manager') . '</p></div>';
 }
 
+if (isset($_GET['config_saved']) && $_GET['config_saved'] == '1') {
+    echo '<div class="notice notice-success is-dismissible"><p>' . __('Config saved from this site.', 'wpu_network_users_manager') . '</p></div>';
+}
+
 /* ----------------------------------------------------------
   Retrieve users and roles
 ---------------------------------------------------------- */
@@ -90,3 +94,4 @@ submit_button(__('Save Changes', 'wpu_network_users_manager'));
 echo '</form>';
 
 include __DIR__ . '/set-all-roles.php';
+include __DIR__ . '/blog-config.php';

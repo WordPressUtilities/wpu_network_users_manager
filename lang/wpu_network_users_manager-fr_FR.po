@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPU Network Users Manager\n"
-"POT-Creation-Date: 2026-06-05 22:22+0200\n"
+"POT-Creation-Date: 2026-06-13 22:27+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -88,7 +88,28 @@ msgstr ""
 msgid "No data available."
 msgstr "Pas de données disponibles."
 
-#: .././inc/tpl/edit-blog.php:11 .././wpu_network_users_manager.php:113
+#: .././inc/tpl/blog-config.php:11
+msgid "User config"
+msgstr "Configuration utilisateur"
+
+#: .././inc/tpl/blog-config.php:18
+msgid "Save current roles as config"
+msgstr "Enregistrer les rôles actuels dans la configuration"
+
+#: .././inc/tpl/blog-config.php:26
+msgid "Apply config"
+msgstr "Appliquer la configuration"
+
+#: .././inc/tpl/blog-config.php:27
+msgid ""
+"Config applied to the form. Review the roles, then click \"Save Changes\" to "
+"persist."
+msgstr ""
+"La configuration a été appliquée au formulaire. Vérifiez les rôles, puis "
+"cliquez sur « Enregistrer les modifications » pour les valider."
+
+#: .././inc/tpl/edit-blog.php:11 .././wpu_network_users_manager.php:117
+#: .././wpu_network_users_manager.php:164
 msgid "Blog not found."
 msgstr "Blog non trouvé."
 
@@ -105,33 +126,37 @@ msgstr "Retour à la liste des sites"
 msgid "Blog updated successfully."
 msgstr "Blog mis à jour avec succès."
 
-#: .././inc/tpl/edit-blog.php:34
+#: .././inc/tpl/edit-blog.php:28
+msgid "Config saved from this site."
+msgstr "Configuration enregistrée à partir de ce site."
+
+#: .././inc/tpl/edit-blog.php:38
 msgid "No users found."
 msgstr "Aucun utilisateur trouvé."
 
-#: .././inc/tpl/edit-blog.php:77 .././inc/tpl/edit-user.php:85
+#: .././inc/tpl/edit-blog.php:81 .././inc/tpl/edit-user.php:85
 #: .././inc/tpl/list-blogs.php:33 .././inc/tpl/list-users.php:33
 msgid "ID"
 msgstr "ID"
 
-#: .././inc/tpl/edit-blog.php:82 .././inc/tpl/list-users.php:38
+#: .././inc/tpl/edit-blog.php:86 .././inc/tpl/list-users.php:38
 msgid "Login"
 msgstr "Connexion"
 
-#: .././inc/tpl/edit-blog.php:83 .././inc/tpl/list-users.php:39
+#: .././inc/tpl/edit-blog.php:87 .././inc/tpl/list-users.php:39
 #: .././inc/tpl/show-list.php:52
 msgid "Email"
 msgstr "E-Mail"
 
-#: .././inc/tpl/edit-blog.php:84 .././inc/tpl/edit-user.php:92
+#: .././inc/tpl/edit-blog.php:88 .././inc/tpl/edit-user.php:92
 msgid "Role"
 msgstr "Rôle"
 
-#: .././inc/tpl/edit-blog.php:89 .././inc/tpl/edit-user.php:97
+#: .././inc/tpl/edit-blog.php:93 .././inc/tpl/edit-user.php:97
 msgid "Save Changes"
 msgstr "Sauvegarder"
 
-#: .././inc/tpl/edit-user.php:10 .././wpu_network_users_manager.php:156
+#: .././inc/tpl/edit-user.php:10 .././wpu_network_users_manager.php:250
 msgid "User not found."
 msgstr "Utilisateur Introuvable."
 
@@ -160,7 +185,7 @@ msgstr "Nom du blog"
 msgid "Blog URL"
 msgstr "URL du blog"
 
-#: .././inc/tpl/list-blogs.php:4 .././wpu_network_users_manager.php:188
+#: .././inc/tpl/list-blogs.php:4 .././wpu_network_users_manager.php:290
 msgid "Sites list"
 msgstr "Liste des sites"
 
@@ -185,7 +210,7 @@ msgstr "URL"
 msgid "Actions"
 msgstr "Actions"
 
-#: .././inc/tpl/list-users.php:4 .././wpu_network_users_manager.php:184
+#: .././inc/tpl/list-users.php:4 .././wpu_network_users_manager.php:286
 msgid "Users list"
 msgstr "Liste des utilisateurs"
 
@@ -201,7 +226,7 @@ msgstr "Définissez tous les rôles"
 msgid "Set all"
 msgstr "Tout définir"
 
-#: .././inc/tpl/show-list.php:8 .././wpu_network_users_manager.php:192
+#: .././inc/tpl/show-list.php:8 .././wpu_network_users_manager.php:294
 msgid "Sites and their users"
 msgstr "Sites et utilisateurs"
 
@@ -213,35 +238,80 @@ msgstr "Aucun utilisateur."
 msgid "Role(s)"
 msgstr "Rôle(s)"
 
-#: .././wpu_network_users_manager.php:46
+#: .././wpu_network_users_manager.php:50
 msgid "Add new user management features to the WP network admin"
 msgstr ""
 "Ajoute de nouvelles fonctionnalités de gestion utilisateur à "
 "l’administration réseau WP"
 
-#: .././wpu_network_users_manager.php:74
+#: .././wpu_network_users_manager.php:78
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Vous n'avez pas les permissions suffisantes pour accéder à cette page."
 
-#: .././wpu_network_users_manager.php:103
-#: .././wpu_network_users_manager.php:146
+#: .././wpu_network_users_manager.php:107
+#: .././wpu_network_users_manager.php:154
+#: .././wpu_network_users_manager.php:188
+#: .././wpu_network_users_manager.php:207
+#: .././wpu_network_users_manager.php:240
 msgid "You do not have sufficient permissions to perform this action."
 msgstr ""
 "Vous n'avez pas les autorisations suffisantes pour effectuer cette opération."
 
-#: .././wpu_network_users_manager.php:107
-#: .././wpu_network_users_manager.php:150
+#: .././wpu_network_users_manager.php:111
+#: .././wpu_network_users_manager.php:158
+#: .././wpu_network_users_manager.php:192
+#: .././wpu_network_users_manager.php:211
+#: .././wpu_network_users_manager.php:244
 msgid "Invalid nonce. Please try again."
 msgstr "Nonce invalide. Veuillez réessayer."
 
-#: .././wpu_network_users_manager.php:123
-#: .././wpu_network_users_manager.php:167
+#: .././wpu_network_users_manager.php:127
+#: .././wpu_network_users_manager.php:261
 #, php-format
 msgid "Invalid role selected for user: %s"
 msgstr "Rôle non valide sélectionné pour l'utilisateur : %s"
 
-#: .././wpu_network_users_manager.php:185
-#: .././wpu_network_users_manager.php:189
-#: .././wpu_network_users_manager.php:193
+#: .././wpu_network_users_manager.php:279
+msgid "Config deleted."
+msgstr "La configuration a été supprimée."
+
+#: .././wpu_network_users_manager.php:283
+msgid "User removed from config."
+msgstr "L'utilisateur a été retiré de la configuration."
+
+#: .././wpu_network_users_manager.php:287
+#: .././wpu_network_users_manager.php:291
+#: .././wpu_network_users_manager.php:295
 msgid "View list"
 msgstr "Voir la liste"
+
+#: .././wpu_network_users_manager.php:298
+msgid "Saved user config"
+msgstr "Configuration utilisateur enregistrée"
+
+#: .././wpu_network_users_manager.php:301
+msgid "No config saved yet. Save one from a site page."
+msgstr ""
+"Aucune configuration n'a encore été enregistrée. Enregistrez-en une à partir "
+"d'une page du site."
+
+#: .././wpu_network_users_manager.php:306
+msgid "Remove this user from the config?"
+msgstr "Retirer cet utilisateur de la configuration ?"
+
+#: .././wpu_network_users_manager.php:314
+msgid "View config"
+msgstr "Afficher la configuration"
+
+#: .././wpu_network_users_manager.php:322
+#, php-format
+msgid "Deleted user #%d"
+msgstr "L’utilisateur n° %d a été supprimé"
+
+#: .././wpu_network_users_manager.php:325
+msgid "Remove"
+msgstr "Retirer"
+
+#: .././wpu_network_users_manager.php:335
+msgid "Delete config"
+msgstr "Supprimer la configuration"

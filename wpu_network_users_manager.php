@@ -4,7 +4,7 @@ Plugin Name: WPU Network Users Manager
 Plugin URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Update URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Description: Add new user management features to the WP network admin
-Version: 0.5.2
+Version: 0.6.0
 Author: Darklg
 Author URI: https://darklg.me/
 Text Domain: wpu_network_users_manager
@@ -23,6 +23,7 @@ class wpu_network_users_manager {
     public $basetoolbox;
     private $user_level = 'manage_network_users';
     private $plugin_name = 'Network Users Manager';
+    private $config_option = 'wpu_network_users_manager_config';
 
     public function __construct() {
         if (!is_multisite() || !is_network_admin()) {
@@ -33,6 +34,9 @@ class wpu_network_users_manager {
         add_action('admin_init', array($this, 'load_dependencies'));
         add_action('admin_init', array($this, 'save_user'));
         add_action('admin_init', array($this, 'save_blog_users'));
+        add_action('admin_init', array($this, 'save_config'));
+        add_action('admin_init', array($this, 'delete_config'));
+        add_action('admin_init', array($this, 'remove_config_user'));
         add_action('network_admin_menu', array($this, 'admin_page'));
     }
 
@@ -133,6 +137,96 @@ class wpu_network_users_manager {
     }
 
     /* ----------------------------------------------------------
+      Config
+    ---------------------------------------------------------- */
+
+    public function get_config() {
+        $config = get_site_option($this->config_option, array());
+        return is_array($config) ? $config : array();
+    }
+
+    public function save_config() {
+        if (!is_network_admin() || empty($_POST) || !isset($_POST['action']) || $_POST['action'] !== 'wpu_network_users_manager_save_config') {
+            return;
+        }
+
+        if (!current_user_can($this->user_level)) {
+            wp_die(__('You do not have sufficient permissions to perform this action.', 'wpu_network_users_manager'));
+        }
+
+        if (!isset($_POST['wpu_network_users_manager_nonce']) || !wp_verify_nonce($_POST['wpu_network_users_manager_nonce'], 'wpu_network_users_manager_save_config')) {
+            wp_die(__('Invalid nonce. Please try again.', 'wpu_network_users_manager'));
+        }
+
+        $blog_id = intval($_POST['blog_id']);
+        $blog_details = get_blog_details($blog_id);
+        if (!$blog_details) {
+            wp_die(__('Blog not found.', 'wpu_network_users_manager'));
+        }
+
+        $users = $this->get_users();
+        $config = array();
+        foreach ($users as $user) {
+            $user_roles = $this->get_user_roles_on_blog($user->ID, $blog_id);
+            if (!empty($user_roles)) {
+                $config[$user->ID] = $user_roles[0];
+            }
+        }
+
+        update_site_option($this->config_option, $config);
+
+        wp_redirect(network_admin_url('users.php?page=wpu_network_users_manager&blog_id=' . $blog_id . '&config_saved=1'));
+        exit;
+    }
+
+    public function delete_config() {
+        if (!is_network_admin() || empty($_POST) || !isset($_POST['action']) || $_POST['action'] !== 'wpu_network_users_manager_delete_config') {
+            return;
+        }
+
+        if (!current_user_can($this->user_level)) {
+            wp_die(__('You do not have sufficient permissions to perform this action.', 'wpu_network_users_manager'));
+        }
+
+        if (!isset($_POST['wpu_network_users_manager_nonce']) || !wp_verify_nonce($_POST['wpu_network_users_manager_nonce'], 'wpu_network_users_manager_delete_config')) {
+            wp_die(__('Invalid nonce. Please try again.', 'wpu_network_users_manager'));
+        }
+
+        delete_site_option($this->config_option);
+
+        wp_redirect(network_admin_url('users.php?page=wpu_network_users_manager&config_deleted=1'));
+        exit;
+    }
+
+    public function remove_config_user() {
+        if (!is_network_admin() || empty($_POST) || !isset($_POST['action']) || $_POST['action'] !== 'wpu_network_users_manager_remove_config_user') {
+            return;
+        }
+
+        if (!current_user_can($this->user_level)) {
+            wp_die(__('You do not have sufficient permissions to perform this action.', 'wpu_network_users_manager'));
+        }
+
+        if (!isset($_POST['wpu_network_users_manager_nonce']) || !wp_verify_nonce($_POST['wpu_network_users_manager_nonce'], 'wpu_network_users_manager_remove_config_user')) {
+            wp_die(__('Invalid nonce. Please try again.', 'wpu_network_users_manager'));
+        }
+
+        $user_id = intval($_POST['remove_user_id']);
+        $config = $this->get_config();
+        if (isset($config[$user_id])) {
+            unset($config[$user_id]);
+            if (empty($config)) {
+                delete_site_option($this->config_option);
+            } else {
+                update_site_option($this->config_option, $config);
+            }
+        }
+
+        wp_redirect(network_admin_url('users.php?page=wpu_network_users_manager&config_user_removed=1'));
+        exit;
+    }
+
+    /* ----------------------------------------------------------
       User
     ---------------------------------------------------------- */
 
@@ -181,6 +275,14 @@ class wpu_network_users_manager {
     ---------------------------------------------------------- */
 
     private function admin_page_list() {
+        if (isset($_GET['config_deleted']) && $_GET['config_deleted'] == '1') {
+            echo '<div class="notice notice-success is-dismissible"><p>' . __('Config deleted.', 'wpu_network_users_manager') . '</p></div>';
+        }
+
+        if (isset($_GET['config_user_removed']) && $_GET['config_user_removed'] == '1') {
+            echo '<div class="notice notice-success is-dismissible"><p>' . __('User removed from config.', 'wpu_network_users_manager') . '</p></div>';
+        }
+
         echo '<h2>' . __('Users list', 'wpu_network_users_manager') . '</h2>';
         echo wpautop('<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&list_users')) . '" class="button">' . __('View list', 'wpu_network_users_manager') . '</a>');
 
@@ -191,6 +293,47 @@ class wpu_network_users_manager {
         echo '<hr />';
         echo '<h2>' . __('Sites and their users', 'wpu_network_users_manager') . '</h2>';
         echo wpautop('<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&show_list=1')) . '" class="button">' . __('View list', 'wpu_network_users_manager') . '</a>');
+
+        echo '<hr />';
+        echo '<h2>' . __('Saved user config', 'wpu_network_users_manager') . '</h2>';
+        $config = $this->get_config();
+        if (empty($config)) {
+            echo wpautop(__('No config saved yet. Save one from a site page.', 'wpu_network_users_manager'));
+            return;
+        }
+
+        $editable_roles = get_editable_roles();
+        $confirm_msg = esc_js(__('Remove this user from the config?', 'wpu_network_users_manager'));
+
+        $config_open = false;
+        if(isset($_GET['config_deleted']) || isset($_GET['config_user_removed'])) {
+            $config_open = true;
+        }
+
+        echo '<details style="margin-bottom: 1em;" ' . ($config_open ? 'open' : '') . '>';
+        echo '<summary>' . __('View config', 'wpu_network_users_manager') . ' (' . count($config) . ')</summary>';
+        echo '<form method="post" action="' . esc_url(network_admin_url('users.php')) . '">';
+        echo '<input type="hidden" name="action" value="wpu_network_users_manager_remove_config_user">';
+        wp_nonce_field('wpu_network_users_manager_remove_config_user', 'wpu_network_users_manager_nonce');
+        echo '<ul class="ul-disc">';
+        foreach ($config as $user_id => $role_key) {
+            $user = get_user_by('ID', $user_id);
+            $role_name = isset($editable_roles[$role_key]) ? $editable_roles[$role_key]['name'] : $role_key;
+            $label = $user ? esc_html($user->user_login) : '<em>' . sprintf(__('Deleted user #%d', 'wpu_network_users_manager'), intval($user_id)) . '</em>';
+            echo '<li>';
+            echo $label . ' &mdash; ' . esc_html($role_name) . ' ';
+            echo '<button type="submit" name="remove_user_id" value="' . esc_attr($user_id) . '" class="button-link delete" onclick="return confirm(\'' . $confirm_msg . '\');">' . __('Remove', 'wpu_network_users_manager') . '</button>';
+            echo '</li>';
+        }
+        echo '</ul>';
+        echo '</form>';
+        echo '</details>';
+
+        echo '<form method="post" action="' . esc_url(network_admin_url('users.php')) . '">';
+        echo '<input type="hidden" name="action" value="wpu_network_users_manager_delete_config">';
+        wp_nonce_field('wpu_network_users_manager_delete_config', 'wpu_network_users_manager_nonce');
+        submit_button(__('Delete config', 'wpu_network_users_manager'), 'delete', 'submit', false);
+        echo '</form>';
     }
 
     /* ----------------------------------------------------------
