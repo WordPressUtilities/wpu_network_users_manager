@@ -4,7 +4,7 @@ Plugin Name: WPU Network Users Manager
 Plugin URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Update URI: https://github.com/WordPressUtilities/wpu_network_users_manager
 Description: Add new user management features to the WP network admin
-Version: 0.6.0
+Version: 0.7.0
 Author: Darklg
 Author URI: https://darklg.me/
 Text Domain: wpu_network_users_manager
@@ -34,6 +34,8 @@ class wpu_network_users_manager {
         add_action('admin_init', array($this, 'load_dependencies'));
         add_action('admin_init', array($this, 'save_user'));
         add_action('admin_init', array($this, 'save_blog_users'));
+        add_action('admin_init', array($this, 'activate_signup'));
+        add_action('admin_init', array($this, 'delete_signup'));
         add_action('admin_init', array($this, 'save_config'));
         add_action('admin_init', array($this, 'delete_config'));
         add_action('admin_init', array($this, 'remove_config_user'));
@@ -82,6 +84,8 @@ class wpu_network_users_manager {
             require_once __DIR__ . '/inc/tpl/edit-user.php';
         } else if (isset($_GET['blog_id'])) {
             require_once __DIR__ . '/inc/tpl/edit-blog.php';
+        } else if (isset($_GET['pending_users'])) {
+            require_once __DIR__ . '/inc/tpl/list-pending-users.php';
         } else if (isset($_GET['show_list'])) {
             require_once __DIR__ . '/inc/tpl/show-list.php';
         } else if (isset($_GET['list_users'])) {
@@ -133,6 +137,66 @@ class wpu_network_users_manager {
         }
 
         wp_redirect(network_admin_url('users.php?page=wpu_network_users_manager&blog_id=' . $blog_id . '&updated=1'));
+        exit;
+    }
+
+    /* ----------------------------------------------------------
+      Pending users (signups)
+    ---------------------------------------------------------- */
+
+    public function get_pending_signups() {
+        global $wpdb;
+        return $wpdb->get_results("SELECT signup_id, user_login, user_email, registered, activation_key FROM {$wpdb->signups} WHERE domain = '' AND active = '0' ORDER BY registered DESC");
+    }
+
+    public function activate_signup() {
+        if (!is_network_admin() || empty($_POST) || !isset($_POST['action']) || $_POST['action'] !== 'wpu_network_users_manager_activate_signup') {
+            return;
+        }
+
+        if (!current_user_can($this->user_level)) {
+            wp_die(__('You do not have sufficient permissions to perform this action.', 'wpu_network_users_manager'));
+        }
+
+        if (!isset($_POST['wpu_network_users_manager_nonce']) || !wp_verify_nonce($_POST['wpu_network_users_manager_nonce'], 'wpu_network_users_manager_activate_signup')) {
+            wp_die(__('Invalid nonce. Please try again.', 'wpu_network_users_manager'));
+        }
+
+        global $wpdb;
+        $signup_id = intval($_POST['signup_id']);
+        $signup = $wpdb->get_row($wpdb->prepare("SELECT activation_key FROM {$wpdb->signups} WHERE signup_id = %d AND domain = '' AND active = '0'", $signup_id));
+        if (!$signup) {
+            wp_die(__('Signup not found.', 'wpu_network_users_manager'));
+        }
+
+        /* Activate silently: no welcome email to the user */
+        add_filter('wpmu_welcome_user_notification', '__return_false');
+        $result = wpmu_activate_signup($signup->activation_key);
+        remove_filter('wpmu_welcome_user_notification', '__return_false');
+
+        $notice = is_wp_error($result) ? 'activate_error=1' : 'activated=1';
+        wp_redirect(network_admin_url('users.php?page=wpu_network_users_manager&pending_users&' . $notice));
+        exit;
+    }
+
+    public function delete_signup() {
+        if (!is_network_admin() || empty($_POST) || !isset($_POST['action']) || $_POST['action'] !== 'wpu_network_users_manager_delete_signup') {
+            return;
+        }
+
+        if (!current_user_can($this->user_level)) {
+            wp_die(__('You do not have sufficient permissions to perform this action.', 'wpu_network_users_manager'));
+        }
+
+        if (!isset($_POST['wpu_network_users_manager_nonce']) || !wp_verify_nonce($_POST['wpu_network_users_manager_nonce'], 'wpu_network_users_manager_delete_signup')) {
+            wp_die(__('Invalid nonce. Please try again.', 'wpu_network_users_manager'));
+        }
+
+        global $wpdb;
+        $signup_id = intval($_POST['signup_id']);
+        $wpdb->delete($wpdb->signups, array('signup_id' => $signup_id), array('%d'));
+
+        wp_redirect(network_admin_url('users.php?page=wpu_network_users_manager&pending_users&deleted=1'));
         exit;
     }
 
@@ -293,6 +357,11 @@ class wpu_network_users_manager {
         echo '<hr />';
         echo '<h2>' . __('Sites and their users', 'wpu_network_users_manager') . '</h2>';
         echo wpautop('<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&show_list=1')) . '" class="button">' . __('View list', 'wpu_network_users_manager') . '</a>');
+
+        echo '<hr />';
+        $pending_count = count($this->get_pending_signups());
+        echo '<h2>' . __('Pending users', 'wpu_network_users_manager') . ' (' . intval($pending_count) . ')</h2>';
+        echo wpautop('<a href="' . esc_url(network_admin_url('users.php?page=wpu_network_users_manager&pending_users')) . '" class="button">' . __('View list', 'wpu_network_users_manager') . '</a>');
 
         echo '<hr />';
         echo '<h2>' . __('Saved user config', 'wpu_network_users_manager') . '</h2>';
